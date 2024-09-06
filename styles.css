@@ -1,0 +1,381 @@
+
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background: #343a40; /* Black background */
+    display: flex;
+    gap: 20px;
+    
+}
+
+.form-container, .right-content {
+    background: #fff; /* White background for contrast */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgb(21, 2, 86); /* Adjusted shadow */
+    box-sizing: border-box;
+}
+
+.form-container {
+    max-width: 480px;
+    flex: 1;
+}
+
+.form-title {
+    font-size: 1.5em;
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 4px;
+}
+
+input[type="text"], input[type="date"], select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.submit-button {
+    padding: 10px;
+    background: #28a745; /* Green submit button */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 1em;
+}
+
+.submit-button:hover {
+    background: #218838;
+}
+
+.right-content {
+    flex: 2;
+    max-width: 10000px;
+    max-height: 10000px;
+    overflow: auto; /* Allows scrolling */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 8px;
+    border: 1px solid #9c0808;
+    text-align: left;
+    white-space: nowrap; /* Prevents text wrapping */
+    text-transform: uppercase; /* Ensure all table text is uppercase */
+}
+
+th {
+    background: #f4f4f4;
+    position: sticky;
+    top: 0; /* Keeps the header fixed on scroll */
+}
+
+.actions button {
+    margin: 0 5px;
+    background: none;
+    border: none;
+    color: #007bff;
+    cursor: pointer;
+    text-decoration: underline;
+    font-size: 0.9em;
+}
+
+.actions button:hover {
+    color: #0056b3;
+    text-decoration: none;
+}
+
+.scroll-container {
+    max-height: 450px; /* Adjust height as needed */
+    overflow-y: auto; /* Enables vertical scrolling */
+    color: #000000;
+    
+}
+
+.search-container {
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.search-container input[type="text"] {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px 0 0 4px;
+    width: calc(100% - 50px); /* Adjust width to fit the button */
+    box-sizing: border-box;
+}
+
+.search-button {
+    padding: 8px 12px;
+    background: #007bff; /* Dark blue background */
+    color: #fff;
+    border: none;
+    border-radius: 0 4px 4px 0;
+    cursor: pointer;
+    font-size: 1em;
+}
+
+.search-button:hover {
+    background: #0056b3;
+}
+
+.search-button svg {
+    fill: #fff;
+    width: 20px;
+    height: 20px;
+}
+
+.count-container {
+    margin-top: 10px;
+    margin-bottom: 30px;
+    display: flex;
+    justify-content: flex-end;
+    font-size: 1em;
+}
+
+.count-box {
+    padding: 10px;
+    margin-left: 10px;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    color: white; /* Default text color for all boxes */
+}
+
+.count-box i {
+    margin-right: 20px;
+    margin-left: 10px;
+    
+}
+
+/* Specific styles for each box */
+.count-box.total-entries {
+    background-color: rgb(0, 248, 0); /* Light green */
+    margin-right: -20px;
+}
+
+.count-box.reserved {
+    background-color: darkred; /* Dark red */
+    margin-right: -20px;
+}
+
+.count-box.floating {
+    background-color: lightcoral; /* Light red */
+    margin-right: -20px;
+    
+}
+
+.count-box.additional {
+    background-color: darkblue; /* Dark blue */
+    margin-right: -20px;
+}
+
+.count-box.tendam {
+    background-color: lightblue; /* Light blue */
+    margin-right: -20px;
+}
+
+.count-box.block {
+    background-color: darkgoldenrod; 
+    margin-right: -20px;
+}
+
+.count-container span {
+    font-weight: bold;
+}
+
+
+.col-id {
+    min-width: 60px;
+}
+
+.col-name {
+    min-width: 150px;
+}
+
+.col-cardNo {
+    min-width: 100px;
+}
+
+.col-company {
+    min-width: 150px;
+}
+
+.col-mobilePhone {
+    min-width: 120px;
+}
+
+.col-remark {
+    min-width: 150px;
+}
+
+.col-vehicleNo {
+    min-width: 120px;
+}
+
+.col-validFrom, .col-validUntil {
+    min-width: 130px;
+}
+
+.col-bayNo {
+    min-width: 100px;
+}
+
+.col-cardType {
+    min-width: 120px;
+}
+
+.col-actions {
+    min-width: 120px;
+}
+
+
+
+.form-container {
+            width: 1000%;
+            margin: auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+
+        .form-title {
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .submit-button {
+            background-color: green;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .toggle-box {
+            margin-top: 30px;
+            margin-left: -240px;
+            padding: 10px;
+            border: 0px solid #ddd;
+            border-radius: 1px;
+            background-color: #f9f9f9;
+            
+        }
+
+        .toggle-box.hidden {
+            display: none;
+            
+        }
+
+        .toggle-button {
+            background-color: darkblue;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-align: left;
+            font-size: 14px;
+            margin-bottom: 10px;
+            display: block;
+            
+            
+        }
+
+        .toggle-box label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+            
+        }
+
+        .hidden {
+        display: none;
+    }
+
+    .scroll-container {
+        max-height: 200px;
+        overflow-y: auto;
+    }
+
+    .submit-button {
+        background-color: green;
+        color: white;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+    }
+
+    #toggleHomeBox {
+    width: 90%; 
+    max-width: 1231px; 
+    padding: 0px; 
+    margin: 30px auto; 
+    margin-left: -60px; 
+    border: 1px solid #ccc; 
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.main-sidebar {
+    padding: 10px; 
+}
+
+.search-container {
+    margin-bottom: 10px; 
+}
+
+.count-box {
+    font-size: 14px; 
+    padding: 10px; 
+}
+
+.scroll-container {
+    max-height: 430px;
+    overflow-y: auto; 
+    
+}
+
+
+
+
+.sort-icons {
+    display: none;
+    font-size: 0.8em;
+    margin-left: 5px;
+  }
+  
+  th.sortable:hover .sort-icons {
+    display: inline;
+  }
+  
+  .sort-asc, .sort-desc {
+    cursor: pointer;
+    color: black; /* Adjust color as needed */
+  }
+
+ 
+  
+
+  
+  .form-group {
+    margin-bottom: 1em;
+}

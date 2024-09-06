@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bousteador Season Card</title>
+
+    <!-- Link to external CSS -->
+    <link rel="stylesheet" href="styles.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+</head>
+<body>
+
+    <span onclick="toggleBox()" style="cursor: pointer; color: rgb(255, 255, 255);">
+        Season Card Allocation Setting
+    </span>
+    
+    <div id="toggleBox" class="toggle-box hidden" >
+        
+        
+        <div class="scroll-container">
+        
+            <form id="myForm">
+                <div class="form-group">
+                    <label for="name">Name:</label>
+                    <input type="text" id="name" name="name" style="text-transform: uppercase;">
+                </div>
+                <div class="form-group">
+                  <label for="cardNo">Card No:</label>
+                  <input type="text" id="cardNo" name="cardNo" style="text-transform: uppercase;" oninput="ensureStartsWithSN()">
+              </div>
+                <div class="form-group">
+                    <label>Blocked:</label>
+                    <div>
+                        <input type="radio" id="block" name="Blocked" value="block"> Block
+                    </div>
+                    <div>
+                        <input type="radio" id="unblock" name="Blocked" value=" "> Unblock
+                    </div>
+                </div>
+                <div class="form-group">
+                  
+                  <label for="company">Company:</label>
+                  <input type="text" id="company-input" name="company" list="company-options" placeholder="Enter company name" style="width: 170px;">
+                  <datalist id="company-options">
+                      <option value="BHB">
+                      <option value="Allianz Life Insurance Malaysia Sdn">
+                      <option value="Elanco">
+                      <option value="Astrazeneca">
+                      <option value="Comman Ground">
+                      <option value="Kose">
+                      <option value="Zchwantech">
+                      <option value="Kering Eyewear">
+                      <option value="Maruss">
+                      <option value="Aim Edition">
+                      <option value="AirAsia">
+                      <option value="Kose">
+                      <option value="Adidas">
+                      <option value="Hapag Lloyd">
+                      <option value="Klinik Oceana">
+                      <option value="Emagene Life">
+                      <option value="Mavora Wellness">
+                      <option value="Nicholas Hor & Co">
+                      <!-- Tambah pilihan lain di sini -->
+                  </datalist>
+              </div>
+              
+              <div class="form-group">
+                <label for="mobilePhone">Mobile Phone:</label>
+                <input 
+                    type="tel" 
+                    id="mobilePhone" 
+                    name="mobilePhone" 
+                    style="width: 180px; height: 30px;" 
+                    placeholder="e.g. 012 345 6789 or 0123456789" 
+                    title="Enter a valid Malaysian phone number."
+                    required
+                >
+            </div>
+                <div class="form-group">
+                  <label for="remark">Remark:</label>
+                  <input type="text" id="remark" name="remark" placeholder="Enter your remarks here" style="width: 170px;; padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+              </div>
+              
+                <div class="form-group">
+                    <label for="vehicleNo1">Vehicle No:</label>
+                    <input type="text" id="vehicleNo1" name="vehicleNo1" style="width: 170px;">
+                </div>
+                <div class="form-group">
+                    <label for="vehicleNo2">Vehicle No.2:</label>
+                    <input type="text" id="vehicleNo2" name="vehicleNo2" style="width: 170px;">
+                </div>
+                <div class="form-group">
+                    <label for="vehicleNo3">Vehicle No.3:</label>
+                    <input type="text" id="vehicleNo3" name="vehicleNo3" style="width: 170px;">
+                </div>
+                <div class="form-group">
+                    <label for="vehicleNo4">Vehicle No.4:</label>
+                    <input type="text" id="vehicleNo4" name="vehicleNo4" style="width: 170px;">
+                </div>
+                <div class="form-group">
+                    <label for="validFrom">Valid From:</label>
+                    <input type="date" id="validFrom" name="validFrom" onclick="this.showPicker()" style="width: 170px;">
+                </div>
+                <div class="form-group">
+                  <label for="validUntil">Valid Until:</label>
+                  <input type="date" id="validUntil" name="validUntil" onclick="this.showPicker()" style="width: 170px;">
+              </div>
+              
+              <div class="form-group">
+                <label for="bayNo">Bay No:</label>
+                <input type="number" id="bayNo" name="bayNo" style="width: 180px; height: 25px;">
+            </div>
+            <div class="form-group">
+              <label for="zone">Zone:</label>
+              <select id="zone" name="zone" style="width: 180px;">
+                  <option value="">Select Zone</option>
+                  <option value="motor">Motor</option>
+                  <option value="car">Car</option>
+              </select>
+          </div>
+          
+            
+                <div class="form-group">
+                    <label for="cardType">Type of Card:</label>
+                    <select id="cardType" name="cardType">
+                        <option value="">Select Type</option>
+                        <option value="reserved">Reserved</option>
+                        <option value="floating">Floating</option>
+                        <option value="additional">Additional</option>
+                        <option value="tendam">Tendam</option>
+                    </select>
+                </div>
+                <button type="submit" class="submit-button">Submit</button>
+            </form>
+        </div>
+    </div>
+
+    
+
+        <div class="right-content">
+            <h2>Data Table</h2>
+            <div class="search-container">
+                <input type="text" id="searchBox" placeholder="Search table...">
+                <button class="search-button" onclick="searchTable()">
+                    <!-- SVG search icon -->
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /></svg>
+
+                </button>
+            </div>
+            <div class="scroll-container">
+                
+                <table id="dataTable">
+                    <thead>
+                        <p>
+                        <tr>
+                            <tr>
+                                <th class="col-id sortable">
+                                    Count
+                                    <span class="sort-icons">
+                                      <i class="sort-asc">↑</i>
+                                      <i class="sort-desc">↓</i>
+                                    </span>
+                                  </th>
+
+                                  <th class="col-name sortable">
+                                    Name
+                                    <span class="sort-icons">
+                                      <i class="sort-asc">↑</i>
+                                      <i class="sort-desc">↓</i>
+                                    </span>
+                                  </th>
+
+                                  <th class="col-cardNo sortable">
+                                    Card No
+                                    <span class="sort-icons">
+                                      <i class="sort-asc">↑</i>
+                                      <i class="sort-desc">↓</i>
+                                    </span>
+                                  </th>
+                                  
+                                  <th class="col-blocked sortable">
+                                    Blocked
+                                    <span class="sort-icons">
+                                      <i class="sort-asc">↑</i>
+                                      <i class="sort-desc">↓</i>
+                                    </span>
+                                  </th>
+
+                                  <th class="col-company sortable">
+                                    Company
+                                    <span class="sort-icons">
+                                      <i class="sort-asc">↑</i>
+                                      <i class="sort-desc">↓</i>
+                                    </span>
+                                  </th>
+                                
+                                  <th class="col-mobilePhone sortable">
+                                    Mobile Phone
+                                    <span class="sort-icons">
+                                      <i class="sort-asc">↑</i>
+                                      <i class="sort-desc">↓</i>
+                                    </span>
+                                  </th>
+
+                                  <th class="col-remark sortable">
+                                    Remark
+                                    <span class="sort-icons">
+                                      <i class="sort-asc">↑</i>
+                                      <i class="sort-desc">↓</i>
+                                    </span>
+                                  </th>
+
+                                  <th class="col-vehicleNo sortable">
+                                    vehicleNo 1
+                                    <span class="sort-icons">
+                                      <i class="sort-asc">↑</i>
+                                      <i class="sort-desc">↓</i>
+                                    </span>
+                                  </th>
+
+                                  <th class="col-vehicleNo sortable">
+                                    vehicleNo 2
+                                    <span class="sort-icons">
+                                      <i class="sort-asc">↑</i>
+                                      <i class="sort-desc">↓</i>
+                                    </span>
+                                  </th>
+
+                                  <th class="col-vehicleNo sortable">
+                                    vehicleNo 3
+                                    <span class="sort-icons">
+                                      <i class="sort-asc">↑</i>
+                                      <i class="sort-desc">↓</i>
+                                    </span>
+                                  </th>
+
+                                  <th class="col-vehicleNo sortable">
+                                    vehicleNo 4
+                                    <span class="sort-icons">
+                                      <i class="sort-asc">↑</i>
+                                      <i class="sort-desc">↓</i>
+                                    </span>
+                                  </th>
+                                
+                                  <th class="col-validFrom sortable">
+                                    validFrom
+                                    <span class="sort-icons">
+                                      <i class="sort-asc">↑</i>
+                                      <i class="sort-desc">↓</i>
+                                    </span>
+                                  </th>
+                                  
+                                  <th class="col-validUntil sortable">
+                                    validUntil
+                                    <span class="sort-icons">
+                                      <i class="sort-asc">↑</i>
+                                      <i class="sort-desc">↓</i>
+                                    </span>
+                                  </th>
+                                  
+                                  <th class="col-bayNo sortable">
+                                    Bay No
+                                    <span class="sort-icons">
+                                      <i class="sort-asc">↑</i>
+                                      <i class="sort-desc">↓</i>
+                                    </span>
+                                  </th>
+
+                                  <th class="col-cardType sortable">
+                                    Zone
+                                    <span class="sort-icons">
+                                      <i class="sort-asc">↑</i>
+                                      <i class="sort-desc">↓</i>
+                                    </span>
+                                  </th>
+
+                                  <th class="col-cardType sortable">
+                                    Type of Card
+                                    <span class="sort-icons">
+                                      <i class="sort-asc">↑</i>
+                                      <i class="sort-desc">↓</i>
+                                    </span>
+                                  </th>
+                                
+                        
+                                <th class="col-actions">Actions</th>
+                            </tr>
+                        </p>
+                    </thead>
+                    <tbody>
+                    
+
+                      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <div class="count-container" style="display: flex; gap: 20px; justify-content: space-around;">
+        <div class="count-box total-entries" style="background-color: #D3E4CD; color: #2F4F4F; padding: 20px; flex: 1; text-align: center; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+            <i class="fas fa-list" style="font-size: 24px; margin-bottom: 10px;"></i>
+            <div>Total: <span id="rowCount" style="font-weight: bold;">0</span></div>
+        </div>
+        <div class="count-box reserved" style="background-color: #E6B0AA; color: #2F4F4F; padding: 20px; flex: 1; text-align: center; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+            <i class="fas fa-bookmark" style="font-size: 24px; margin-bottom: 10px;"></i>
+            <div>Reserved: <span id="reservedCount" style="font-weight: bold;">0</span></div>
+        </div>
+        <div class="count-box floating" style="background-color: #F9E79F; color: #2F4F4F; padding: 20px; flex: 1; text-align: center; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+            <i class="fas fa-leaf" style="font-size: 24px; margin-bottom: 10px;"></i>
+            <div>Floating: <span id="floatingCount" style="font-weight: bold;">0</span></div>
+        </div>
+        <div class="count-box additional" style="background-color: #AED6F1; color: #2F4F4F; padding: 20px; flex: 1; text-align: center; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+            <i class="fas fa-plus-circle" style="font-size: 24px; margin-bottom: 10px;"></i>
+            <div>Additional: <span id="additionalCount" style="font-weight: bold;">0</span></div>
+        </div>
+        <div class="count-box tendam" style="background-color: #D5DBDB; color: #2F4F4F; padding: 20px; flex: 1; text-align: center; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+            <i class="fas fa-car" style="font-size: 24px; margin-bottom: 10px;"></i>
+            <div>Tandem: <span id="tendamCount" style="font-weight: bold;">0</span></div>
+        </div>
+        <div class="count-box block" style="background-color: #FADBD8; color: #2F4F4F; padding: 20px; flex: 1; text-align: center; border-radius: 10px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);">
+            <i class="fas fa-ban" style="font-size: 24px; margin-bottom: 10px;"></i>
+            <div>Block: <span id="blockCount" style="font-weight: bold;">0</span></div>
+        </div>
+    </div>
+    
+    
+    </div>
+
+                    </tbody>
+                </table>
+            </div>
+            <div class="count-container">
+                <div class="count-box total-entries" style="background-color: lightgreen; color: rgb(0, 0, 0);">
+                    <i class="fas fa-list"></i>
+                    <div id="totalEntries">Total Entries: 0</div>
+                </div>
+            </div>
+            
+            </form>
+        </div>
+    </div>
+    
+
+<!-- Link to external JavaScript -->
+    <script src="script.js"></script>
+
+  </body>
+  </html>
